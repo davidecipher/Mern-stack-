@@ -1,11 +1,17 @@
 const express = require('express');
 const router = express.Router();
+const {
+   getPosts,
+   getSinglePost,
+   setPost,
+   updatePost,
+   deletePost
+} = require('../controllers/postControllers');
 
-router.get('/', (req, res) => {
-   res.json({ 
-      author: 'Mark',
-      content: 'Why would I resort to trickery, you\'re already a prisoner'
-   })
-});
+router.get('/', getPosts);
+router.get('/:id', getSinglePost);
+router.post('/', setPost);
+router.put('/:id', updatePost);
+router.delete('/:id', deletePost);
 
 module.exports = router;
